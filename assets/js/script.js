@@ -5,8 +5,6 @@ let modalKey = 0
 const c = el => document.querySelector(el)
 const cs = el => document.querySelectorAll(el)
 
-let precoPizza
-
 // Listangem das pizzas 
 pizzaJson.map((item, index) => {
   // criando uma cópia do html
@@ -33,8 +31,7 @@ pizzaJson.map((item, index) => {
     c('.pizzaBig img').src = pizzaJson[key].img
     c('.pizzaInfo h1').innerHTML = pizzaJson[key].name
     c('.pizzaInfo--desc').innerHTML = pizzaJson[key].description
-    precoPizza = pizzaJson[key].price.toFixed(2)
-    c('.pizzaInfo--actualPrice').innerHTML = `R\$${precoPizza}`
+    c('.pizzaInfo--actualPrice').innerHTML = `R\$${pizzaJson[key].price.toFixed(2)}`
 
     // removendo o size selecionado
     c('.pizzaInfo--size.selected').classList.remove('selected')
@@ -78,8 +75,6 @@ cs('.pizzaInfo--cancelButton', 'pizzaInfo--cancelMobileButton')
 c('.pizzaInfo--qtmais').addEventListener('click', () => {
   modalQt++
   c('.pizzaInfo--qt').innerHTML = modalQt
-  let total = parseFloat(precoPizza) + parseFloat(precoPizza)
-  c('.pizzaInfo--actualPrice').innerHTML = `R\$${total}`
 })
 
 c('.pizzaInfo--qtmenos').addEventListener('click', () => {
